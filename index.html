@@ -2,22 +2,76 @@
 <html>
 <head>
 <style>
-body{background:#000;color:#fff;}
+body{
+background:#000;
+color:#fff;
+/*页面整体淡入动画*/
+animation: pageFadeIn 1.2s ease‑in‑out;
+}
+@keyframes pageFadeIn{
+0%{opacity:0;}
+100%{opacity:1;}
+}
 .box{width:600px;margin:20px auto;}
 .top{display:flex;align-items:flex-start;gap:14px;margin-bottom:4px;}
 .top-text{font-size:18px;line-height:1.6;}
-.small-top{width:180px;height:125px;overflow:hidden;}
+.small-top{
+width:180px;height:125px;
+overflow:hidden;
+border-radius:8px;
+transition: all 0.3s ease;
+}
+/*鼠标放上去图片微微放大*/
+.small-top:hover{
+transform: scale(1.05);
+}
 .small-top img{width:100%;height:100%;object‑fit:cover;}
 .bottom-wrap{display:flex;gap:15px;}
 .left-col{width:48%;}
-/*取消固定高度，图片用原图自身大小*/
-.big1{width:100%;overflow:hidden;margin-bottom:15px;}
+.big1{
+width:100%;
+overflow:hidden;
+margin-bottom:15px;
+border-radius:8px;
+transition: all 0.3s ease;
+}
+.big1:hover{
+transform: scale(1.03);
+}
 .big1 img{width:100%;height:auto;display:block;}
-.big2{width:100%;overflow:hidden;}
+.big2{
+width:100%;
+overflow:hidden;
+border-radius:8px;
+transition: all 0.3s ease;
+}
+.big2:hover{
+transform: scale(1.03);
+}
 .big2 img{width:100%;height:auto;display:block;}
 .right-col{width:48%;}
-.right-img{width:85%;height:440px;background:#ddd;margin:0 auto;}
-.bottom-text{margin-top:12px;font-size:15px;line-height:1.8;text-align:center;}
+.right-img{
+width:85%;height:440px;
+background:#222;
+margin:0 auto;
+border-radius:8px;
+transition: all 0.3s ease;
+}
+.right-img:hover{
+transform: scale(1.03);
+}
+.bottom-text{
+margin-top:30px;
+font-size:15px;
+line-height:1.8;
+text-align:center;
+/*文字缓缓上浮*/
+animation:textUp 1.5s ease;
+}
+@keyframes textUp{
+0%{transform:translateY(20px);opacity:0;}
+100%{transform:translateY(0px);opacity:1;}
+}
 </style>
 </head>
 <body>
