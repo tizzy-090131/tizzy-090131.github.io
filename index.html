@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 *{
 margin:0;
@@ -10,46 +12,99 @@ box-sizing:border-box;
 body{
 background:#000000;
 color:#f5f5f7;
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans‑serif;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC",sans-serif;
 padding:60px 20px;
-/*苹果丝滑缓动入场*/
-animation: pageShow 1.2s cubic‑bezier(0.2,0,0.2,1);
+position:relative;
+overflow-x:hidden;
+animation:pageShow 1.2s cubic-bezier(0.2,0,0.2,1);
 }
 @keyframes pageShow{
 0%{opacity:0;transform:translateY(24px);}
 100%{opacity:1;transform:translateY(0);}
 }
+/*顶部滚动进度条*/
+.scroll-bar{
+position:fixed;
+top:0;left:0;
+height:3px;
+width:0%;
+background:linear-gradient(90deg,#ffd700,#ff8c00);
+z-index:99;
+}
+/*背景星空粒子*/
+.stars{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+pointer-events:none;
+z-index:0;
+}
+.star{
+position:absolute;
+background:#ffffff;
+border-radius:50%;
+opacity:0;
+animation:twinkle linear infinite;
+}
+@keyframes twinkle{
+0%{opacity:0;transform:scale(0.6);}
+50%{opacity:0.9;transform:scale(1.2);}
+100%{opacity:0;transform:scale(0.6);}
+}
 .box{
 width:620px;
 margin:0 auto;
+position:relative;
+z-index:1;
 }
 .top{
 display:flex;
-align-items:flex‑start;
+align-items:flex-start;
 gap:32px;
 margin-bottom:60px;
 }
 .top-text{
 font-size:20px;
 line-height:1.9;
-letter‑spacing:0.3px;
+letter-spacing:0.3px;
 opacity:0.94;
+}
+/*金色流光标题*/
+.glow{
+font-size:26px;
+font-weight:700;
+background:linear-gradient(90deg,#f5f5f7,#ffd700,#ff8c00,#f5f5f7);
+background-size:300% 100%;
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+animation:shimmer 5s linear infinite;
+}
+@keyframes shimmer{
+0%{background-position:0% 0;}
+100%{background-position:300% 0;}
 }
 .small-top{
 width:180px;
 height:125px;
 overflow:hidden;
-border‑radius:14px;
-transition:0.6s cubic‑bezier(0.2,0,0.2,1);
+border-radius:14px;
+transition:0.6s cubic-bezier(0.2,0,0.2,1);
+opacity:0;
+transform:translateY(30px);
 }
-/*苹果式悬浮：只上浮，几乎不放大，没有爆炸亮光*/
+.small-top.show{
+opacity:1;
+transform:translateY(0);
+}
 .small-top:hover{
 transform:translateY(-4px);
+box-shadow:0 8px 40px rgba(255,215,0,0.15);
 }
 .small-top img{
 width:100%;
 height:100%;
-object‑fit:cover;
+object-fit:cover;
 display:block;
 }
 .bottom-wrap{
@@ -63,11 +118,18 @@ width:48%;
 width:100%;
 overflow:hidden;
 margin-bottom:30px;
-border‑radius:14px;
-transition:0.6s cubic‑bezier(0.2,0,0.2,1);
+border-radius:14px;
+transition:0.6s cubic-bezier(0.2,0,0.2,1);
+opacity:0;
+transform:translateY(30px);
+}
+.big1.show{
+opacity:1;
+transform:translateY(0);
 }
 .big1:hover{
 transform:translateY(-4px);
+box-shadow:0 8px 40px rgba(255,215,0,0.15);
 }
 .big1 img{
 width:100%;
@@ -77,11 +139,18 @@ display:block;
 .big2{
 width:100%;
 overflow:hidden;
-border‑radius:14px;
-transition:0.6s cubic‑bezier(0.2,0,0.2,1);
+border-radius:14px;
+transition:0.6s cubic-bezier(0.2,0,0.2,1);
+opacity:0;
+transform:translateY(30px);
+}
+.big2.show{
+opacity:1;
+transform:translateY(0);
 }
 .big2:hover{
 transform:translateY(-4px);
+box-shadow:0 8px 40px rgba(255,215,0,0.15);
 }
 .big2 img{
 width:100%;
@@ -96,20 +165,36 @@ width:85%;
 height:440px;
 background:#111113;
 margin:0 auto;
-border‑radius:14px;
-transition:0.6s cubic‑bezier(0.2,0,0.2,1);
+border-radius:14px;
+transition:0.6s cubic-bezier(0.2,0,0.2,1);
+opacity:0;
+transform:translateY(30px);
+}
+.right-img.show{
+opacity:1;
+transform:translateY(0);
 }
 .right-img:hover{
 transform:translateY(-4px);
+box-shadow:0 8px 40px rgba(255,215,0,0.15);
 }
 .bottom-text{
-margin‑top:70px;
-font‑size:16px;
-line‑height:2;
-text‑align:center;
+margin-top:70px;
+font-size:16px;
+line-height:2;
+text-align:center;
 opacity:0.72;
-letter‑spacing:0.5px;
-animation:textFadeUp 1.6s cubic‑bezier(0.2,0,0.2,1);
+letter-spacing:0.5px;
+animation:textFadeUp 1.6s cubic-bezier(0.2,0,0.2,1);
+}
+/*底部文字上方金色装饰线*/
+.bottom-text::before{
+content:'';
+display:block;
+width:60px;
+height:1px;
+background:linear-gradient(90deg,transparent,#ffd700,transparent);
+margin:0 auto 24px;
 }
 @keyframes textFadeUp{
 0%{opacity:0;transform:translateY(30px);}
@@ -118,10 +203,12 @@ animation:textFadeUp 1.6s cubic‑bezier(0.2,0,0.2,1);
 </style>
 </head>
 <body>
+<div class="scroll-bar" id="scrollBar"></div>
+<div class="stars" id="stars"></div>
 <div class="box">
   <div class="top">
     <div class="top-text">
-地图龟<br>
+<span class="glow">地图龟</span><br>
 学名：Graptemys geographica<br>
 泽龟科、地图龟属爬行动物<br>
 取名：鱼仔
@@ -150,5 +237,39 @@ Thank you for choosing us.<br>
 Let every turtle have its own home.
   </div>
 </div>
+
+<script>
+//滚动浮现
+const items=document.querySelectorAll('.small-top,.big1,.big2,.right-img');
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(item=>{
+if(item.isIntersecting){
+item.target.classList.add('show');
+}
+});
+},{threshold:0.12});
+items.forEach(el=>observer.observe(el));
+
+//生成星空粒子
+const starBox=document.getElementById('stars');
+for(let i=0;i<60;i++){
+const s=document.createElement('span');
+s.className='star';
+s.style.left=Math.random()*100+'%';
+s.style.top=Math.random()*100+'%';
+s.style.width=(1+Math.random()*2)+'px';
+s.style.height=s.style.width;
+s.style.animationDuration=(2+Math.random()*3)+'s';
+s.style.animationDelay=Math.random()*4+'s';
+starBox.appendChild(s);
+}
+
+//滚动进度条
+window.addEventListener('scroll',()=>{
+const h=document.documentElement;
+const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+document.getElementById('scrollBar').style.width=p+'%';
+});
+</script>
 </body>
 </html>
