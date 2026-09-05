@@ -10,10 +10,12 @@ body{background:#000;color:#fff;}
 .small-top img{width:100%;height:100%;object‑fit:cover;}
 .bottom-wrap{display:flex;gap:15px;}
 .left-col{width:48%;}
-.big1{width:100%;height:160px;background:#fff;margin-bottom:15px;}
-.big2{width:100%;height:320px;background:#fff;}
+.big1{width:100%;height:160px;overflow:hidden;margin-bottom:15px;}
+.big1 img{width:100%;height:100%;object‑fit:cover;}
+.big2{width:100%;height:320px;overflow:hidden;}
+.big2 img{width:100%;height:100%;object‑fit:cover;}
 .right-col{width:48%;}
-.right-img{width:85%;height:440px;background:#fff;margin:0 auto;}
+.right-img{width:85%;height:440px;background:#ddd;margin:0 auto;}
 .bottom-text{margin-top:12px;font-size:15px;line-height:1.8;text-align:center;}
 </style>
 </head>
@@ -32,8 +34,12 @@ body{background:#000;color:#fff;}
   </div>
   <div class="bottom-wrap">
     <div class="left-col">
-      <div class="big1">左第一张短图</div>
-      <div class="big2">左第二张大图</div>
+      <div class="big1">
+<img src="https://tizzy-090131.github.io/01.jpg">
+      </div>
+      <div class="big2">
+<img src="https://tizzy-090131.github.io/02.jpg">
+      </div>
     </div>
     <div class="right-col">
       <div class="right-img">右侧偏小图</div>
