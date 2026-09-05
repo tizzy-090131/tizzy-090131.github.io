@@ -10,10 +10,11 @@ body{background:#000;color:#fff;}
 .small-top img{width:100%;height:100%;object‑fit:cover;}
 .bottom-wrap{display:flex;gap:15px;}
 .left-col{width:48%;}
-.big1{width:100%;height:160px;overflow:hidden;margin-bottom:15px;}
-.big1 img{width:100%;height:100%;object‑fit:cover;}
-.big2{width:100%;height:320px;overflow:hidden;}
-.big2 img{width:100%;height:100%;object‑fit:cover;}
+/*取消固定高度，图片用原图自身大小*/
+.big1{width:100%;overflow:hidden;margin-bottom:15px;}
+.big1 img{width:100%;height:auto;display:block;}
+.big2{width:100%;overflow:hidden;}
+.big2 img{width:100%;height:auto;display:block;}
 .right-col{width:48%;}
 .right-img{width:85%;height:440px;background:#ddd;margin:0 auto;}
 .bottom-text{margin-top:12px;font-size:15px;line-height:1.8;text-align:center;}
